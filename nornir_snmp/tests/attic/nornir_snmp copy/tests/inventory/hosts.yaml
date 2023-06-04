@@ -1,0 +1,135 @@
+---
+#
+# Core routers
+#
+cr1.dcg:
+  hostname: cr1.dcg
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles: 
+      - core_router
+      - router
+cr1.eqam8:
+  hostname: cr1.eqam8
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles: 
+      - core_router
+      - router
+cr1.gs:
+  hostname: cr1.gs
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles: 
+      - core_router
+      - router
+cr1.nldc:
+  hostname: cr1.nldc
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles: 
+      - core_router
+      - router
+
+#
+# Border routers
+#
+br1.eqam7:
+  hostname: br1.eqam7
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - border_router
+      - router
+br1.gs:
+  hostname: br1.gs
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - border_router
+      - router
+
+#
+# Provider edge routers
+#
+pe1.eqam7:
+  hostname: pe1.eqam7
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - pe_router
+      - router
+pe1.gs:
+  hostname: pe1.gs
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - pe_router
+      - router
+
+#
+# Core switches
+#
+cs1.dcg:
+  hostname: cs1.dcg
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - core_switch
+      - switch
+cs1.eqam7:
+  hostname: cs1.eqam7
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - core_switch
+      - switch
+cs1.eqam8:
+  hostname: cs1.eqam8
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - core_switch
+      - switch
+cs1.gs:
+  hostname: cs1.gs
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - core_switch
+      - switch
+cs1.nldc:
+  hostname: cs1.nldc
+  groups:
+    - credentials_kis
+    - cli_junos_ssh
+  data:
+    roles:
+      - core_switch
+      - switch
+
+

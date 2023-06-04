@@ -1,16 +1,36 @@
 from nornir_utils.plugins.functions import print_result
-from nornir.core.task import Task, Result
 from nornir_snmp.plugins.tasks import snmp_get
-
 from nornir_snmp.tests.init_nornir import nornir_inventory
 
 
-nr = nornir_inventory().filter(hostname="cr1.dcg")
+nr = nornir_inventory().filter(hostname="cs1.dcg")
 
 result = nr.run(
     task=snmp_get, 
-    oid=("SNMPv2-MIB", "sysDescr", 0),
-    #asn1Sources=['http://mibs.snmplabs.com/asn1/@mib@'],
-    #mibSources=['/opt/nornir/nornir_snmp/nornir_snmp/pymibs'],
-    resolveMib = True)
+    oids=[
+        ("SNMPv2-MIB", "sysDescr", 0),
+        ('SNMPv2-MIB', 'sysUpTime', 0)
+    ]
+)
 print_result(result)
+
+nr = nornir_inventory().filter(hostname="cr1.dcg")
+
+
+result = nr.run(
+    task=snmp_get, 
+    oid=('SNMPv2-MIB', 'sysUpTime', 0),
+    asn1Sources    = 'https://pysnmp.github.io/mibs/asn1/@mib@',  
+    #payload        = 'rtrsdfs',
+    lookupMib = True,
+    lexicographicMode = True,
+    ignoreNonIncreasingOid = True,
+    maxRows = 19    ,
+    mibSources     = None,
+    modNames       = None,
+    resolveWithMib = None,
+    ignoreErrors   = False,
+    lajsdjhfalsdkjfskdj = 'asfsfgadfg'
+)
+print_result(result)
+

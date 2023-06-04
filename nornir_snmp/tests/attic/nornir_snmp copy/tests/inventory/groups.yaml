@@ -1,0 +1,41 @@
+---
+credentials_kis:
+  username: 'rancid'
+  password: '1qaz9ijn!'
+  connection_options:
+    SNMP:
+      extras:
+        communityIndex: '@c1sc0atl45t'
+        communityName: '@c1sc0atl45t'
+
+
+cli_cisco_ios_telnet:
+  platform: ios
+  connection_options:
+    netmiko:
+      extras:
+        device_type: cisco_ios_telnet
+    napalm:
+      extras:
+        optional_args:
+          transport: 'telnet'
+
+cli_cisco_ios_ssh:
+  platform: ios
+
+cli_cisco_iosxe_ssh:
+  platform: iosxe
+
+cli_cisco_iosxr_ssh:
+  platform: iosxr
+
+cli_cisco_nxos_ssh:
+  platform: nxos
+
+cli_junos_ssh:
+  platform: junos
+  connection_options:
+    netmiko:
+      extras:
+        fast_cli: False
+        global_delay_factor: 3

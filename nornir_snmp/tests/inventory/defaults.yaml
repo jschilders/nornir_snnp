@@ -1,0 +1,7 @@
+---
+connection_options:
+  SNMP:
+    extras:
+      communityIndex: '@c1sc0atl45t'
+      communityName: '@c1sc0atl45t'
+

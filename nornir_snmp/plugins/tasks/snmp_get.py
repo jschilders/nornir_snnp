@@ -1,12 +1,20 @@
 from nornir.core.task import Result, Task
 from nornir_snmp.plugins.connections import CONNECTION_NAME
+from nornir_snmp.plugins.tasks.resolve  import ResolveMibs
+from nornir_snmp.plugins.tasks.results  import get_results
 
-__all__ = ("snmp_get")
+def snmp_get(task: Task, **options) -> Result:
 
-def snmp_get(task: Task, **kwargs) -> Result:
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    results = device.pysnmp_get(**kwargs)
+
+    oids = ResolveMibs(**options)
+
+    iterator = device.pysnmp_get(*oids, **options)
+
+    results = get_results(iterator)
+   
     return Result(
         host=task.host,
-        result=[ f"{name.prettyPrint()} = {value.prettyPrint()}" for name, value in results ]
+        result=results
     )
+

@@ -1,0 +1,18 @@
+
+'SNMPv2-MIB', 'sysDescr', 0
+'SNMPv2-MIB', 'sysUpTime', 0
+
+
+
+
+https://pysnmp.github.io/mibs/asn1/@mib@
+
+
+
+pysnmp.smi.error.MibNotFoundError: IF-MIB compilation error(s): missingcaused by <class 'pysnmp.smi.error.MibNotFoundError'>: MIB file "IF-MIB.py[co]" not found in search path 
+(
+    DirMibSource('/opt/nornir/nornir_snmp/.venv/lib/python3.9/site-packages/pysnmp/smi/mibs'), 
+    DirMibSource('/opt/nornir/nornir_snmp/.venv/lib/python3.9/site-packages/pysnmp/smi/mibs/instances'), 
+    DirMibSource('pysnmp_mibs'), 
+    DirMibSource('/home/joss/.pysnmp/mibs')
+)

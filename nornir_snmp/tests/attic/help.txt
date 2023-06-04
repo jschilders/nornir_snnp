@@ -1,0 +1,92 @@
+SnmpEngine(
+		snmpEngineID: OctetString
+	)
+	getMibBuilder()
+	registerTransportDispatcher(transportDispatcher, recvId=None)
+	unregisterTransportDispatcher(recvId=None)
+	getUserContext(arg)
+	setUserContext(**kwargs)
+	delUserContext(arg)
+
+
+CommunityData(
+		communityIndex: str,
+		communityName: str,
+		mpModel: int (enum: 0 = snmp v1, 1=snmp v2c),
+		contextEngineId: str
+		contextName: str
+		tag: str
+	)
+
+UsmUserData(
+	userName: str
+	authKey: str
+	privKey: str
+	authProtocol: tuple() | pysnmp.proto.rfc1902.ObjectIdentifier
+		pysnmp.hlapi.usmNoAuthProtocol (default is *authKey* not given)
+		pysnmp.hlapi.usmHMACMD5AuthProtocol (default if *authKey* is given)
+		pysnmp.hlapi.usmHMACSHAAuthProtocol
+		pysnmp.hlapi.usmHMAC128SHA224AuthProtocol
+		pysnmp.hlapi.usmHMAC192SHA256AuthProtocol
+		pysnmp.hlapi.usmHMAC256SHA384AuthProtocol
+		pysnmp.hlapi.usmHMAC384SHA512AuthProtocol
+	securityEngineId: str|Octetstring
+	securityName:	str|Octetstring
+	privProtocol:	tuple() | pysnmp.proto.rfc1902.ObjectIdentifier
+		pysnmp.hlapi.usmNoPrivProtocol (default is *authKey* not given)
+		pysnmp.hlapi.usmDESPrivProtocol (default if *authKey* is given)
+		pysnmp.hlapi.usm3DESEDEPrivProtocol
+		pysnmp.hlapi.usmAesCfb128Protocol
+		pysnmp.hlapi.usmAesCfb192Protocol
+		pysnmp.hlapi.usmAesCfb256Protocol
+	authKeyType: int
+		pysnmp.hlapi.usmKeyTypePassphrase (default)
+		pysnmp.hlapi.usmKeyTypeMaster
+		pysnmp.hlapi.usmKeyTypeLocalized
+	 privKeyType: int
+		pysnmp.hlapi.usmKeyTypePassphrase (default)
+		pysnmp.hlapi.usmKeyTypeMaster
+		pysnmp.hlapi.usmKeyTypeLocalized
+
+
+)
+UdpTransportTarget(
+		transportAddr: tuple(FQDN, port)
+		timeout: int
+		retries: int
+		tagList: str
+	)
+	getTransportInfo()
+	openClientMode()
+	setLocalAddress(iface: tuple(FQDN, port))
+	verifyDispatcherCompatibility(snmpEngine)
+
+
+Udp6TransportTarget(
+		transportAddr: tuple(FQDN, port)
+		timeout: int
+		retries: int
+		tagList: str
+	)
+	getTransportInfo()
+	openClientMode()
+	setLocalAddress(iface: tuple(FQDN, port))
+	verifyDispatcherCompatibility(snmpEngine)
+
+
+UnixTransportTarget(
+		transportAddr: tuple(FQDN, port)
+		timeout: int
+		retries: int
+		tagList: str
+	)
+	getTransportInfo()
+	openClientMode()
+	setLocalAddress(iface: tuple(FQDN, port))
+	verifyDispatcherCompatibility(snmpEngine)
+
+
+ContextData(
+	contextEngineId : str
+	contextName : str
+)

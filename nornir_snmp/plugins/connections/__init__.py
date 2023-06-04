@@ -14,8 +14,8 @@ class SNMP:
         password:       Optional[str],
         port:           Optional[int],
         platform:       Optional[str],
-        extras:         Optional[dict[str, Any]],
-        configuration:  Optional[Config],
+        extras:         Optional[dict[str, Any]]= None,
+        configuration:  Optional[Config]= None,
     ) -> None:
         """
         Initialize SNMP class instance
@@ -74,7 +74,7 @@ class SNMP:
                 SNMP:
                     extras:
                         snmp_protocol:  v2c
-                        communityName:  '@c1sc0atl45t'
+                        communityName:  public
                         transportAddr:  [some.host.name, 161]
 
             parameters listed under connection_options.SNMP.extras will override host parameters.
@@ -82,17 +82,17 @@ class SNMP:
         """
 
         #
-        # Try to get some sensible values out of the standard connection parrameters, in case there are no 'connection_parameters' options. 
+        # Try to get some sensible values out of the standard connection parrameters, in case there are no 'connection_options' under extras. 
         # Use hostname and port for transportaddr, and the password as the community string. This is enough for SNMP v1/v2c.
         # These will be overridden by parameters specified in the 'extras' dict
         #
         parameters = {
             'communityIndex':   None,
-            'communityName':    password,
+            'communityName':    password or 'public',
             'transportAddr':    (hostname, port or 161),
         }
         #
-        # Override with parameters from 'connection_parameters'
+        # Override with parameters from 'connection_options'
         #
         parameters.update(extras or {})
         
