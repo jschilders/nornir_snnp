@@ -20,14 +20,14 @@ nr = nornir_inventory().filter(hostname="cr1.dcg")
 result = nr.run(
     task=snmp_get, 
     oid=('SNMPv2-MIB', 'sysUpTime', 0),
-    asn1Sources    = 'https://pysnmp.github.io/mibs/asn1/@mib@',  
+    addAsn1MibSource    = 'https://pysnmp.github.io/mibs/asn1/@mib@',  
     #payload        = 'rtrsdfs',
     lookupMib = True,
     lexicographicMode = True,
     ignoreNonIncreasingOid = True,
     maxRows = 19    ,
-    mibSources     = None,
-    modNames       = None,
+    addMibSource     = None,
+    loadMibs       = None,
     resolveWithMib = None,
     ignoreErrors   = False,
     lajsdjhfalsdkjfskdj = 'asfsfgadfg'

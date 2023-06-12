@@ -1,6 +1,6 @@
 from nornir.core.task import Result, Task
 from nornir_snmp.plugins.connections import CONNECTION_NAME
-from nornir_snmp.plugins.tasks.resolve  import ResolveMibs
+from nornir_snmp.plugins.tasks.resolve  import resolve_mibs
 from nornir_snmp.plugins.tasks.results  import get_results
 
 
@@ -8,9 +8,9 @@ def snmp_bulk(task: Task, **options) -> Result:
 
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
 
-    oidlist = ResolveMibs(**options)
+    oids = resolve_mibs(**options)
 
-    iterator = device.pysnmp_bulk(*oidlist, **options)
+    iterator = device.pysnmp_bulk(*oids, **options)
 
     results = get_results(iterator)
 
