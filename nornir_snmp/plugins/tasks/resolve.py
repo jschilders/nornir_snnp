@@ -30,7 +30,6 @@ def make_object_identity(_oid, last=False, **options) -> ObjectIdentity:
         ObjectIdentity
 
     """
-    print('ObjectIdentity:',_oid)
     object_identity = ObjectIdentity(*str_or_list(_oid), last=last)
     
     enhance_object(object_identity, **options)
@@ -202,8 +201,6 @@ def resolve_mibs(oid=None, oids=None, payload=None, instance=None, objects=None,
 
     options = copy_keys(kwargs, ['addAsn1MibSource', 'addMibSource', 'loadMibs', 'resolveWithMib', 'ignoreErrors'])
 
-    print('OPTIONS:', options)
-    
     if instance or objects:
         
         if oid is not None:
